@@ -9,3 +9,7 @@ edition = "2021"
 regex = "1.5.5"
 lazy_static = "1.4.0"
 rayon = "1.5.2"
+
+[profile.release]
+lto = true
+strip = true

@@ -50,9 +50,10 @@ fn download_video(video: &VideoInfo) {
         .arg(&video.link);
 
     if video.title.is_some() {
-        let mut title = String::from("./audio/");
-        title.push_str(video.title.as_ref().unwrap().as_str());
+        let mut title = String::from(video.title.as_ref().unwrap().as_str());
         title.push_str(".%(ext)s'");
+        let mut title = title.replace("/", "");
+        title.insert_str(0, "./audio/");
         cmd.args(["-o", &title]);
     }
     cmd.output().unwrap();
